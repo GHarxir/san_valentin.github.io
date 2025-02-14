@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Quieres ser mi San Valentín?</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #8B2C2C; /* Rosa oscuro */
+      position: relative;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: white;
+      font-size: 40px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+    .emoji {
+      font-size: 40px;
+      margin: 10px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px; /* Espacio entre los botones */
+      position: relative;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: transform 0.2s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .yes {
+      background-color: red;
+      color: white;
+    }
+    .no {
+      background-color: gray;
+      color: white;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    /* Animación para la explosión del botón No */
+    .explosion {
+      animation: explosion 0.5s forwards;
+    }
+    @keyframes explosion {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(2);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+    /* Animación de desvanecimiento para el mensaje */
+    @keyframes desvanecer {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    /* Mensaje "Ya quisieras" */
+    .ya-quisieras {
+      font-size: 30px;
+      color: white;
+      display: none;
+      position: absolute;
+      bottom: 20%; /* Se sube un poco más */
+      z-index: 1;
+      animation: mostrarYa 1s forwards;
+    }
+    @keyframes mostrarYa {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    /* Emojis de gatos decorativos */
+    .gatos {
+      position: absolute;
+      font-size: 50px;
+      z-index: 0;
+    }
+    .gato1 { top: 10%; left: 10%; }
+    .gato2 { top: 10%; right: 10%; }
+    .gato3 { bottom: 10%; left: 10%; }
+    .gato4 { bottom: 10%; right: 10%; }
+  </style>
+</head>
+<body>
+  <h1>¿Quieres ser mi San Valentín?</h1>
+  <div class="emoji">
+    ❤️ 🌷
+  </div>
+  <div class="buttons">
+    <button class="yes" onclick="mostrarMensaje()">Sí</button>
+    <button class="no" onclick="explosionNo()">No</button>
+  </div>
+  
+  <!-- Mensaje "Ya quisieras" que se muestra al presionar No -->
+  <div id="yaquisieras" class="ya-quisieras">
+    Ya quisieras jijij 😜
+  </div>
+  
+  <!-- Emojis de gatos decorativos -->
+  <div class="gatos gato1">😺</div>
+  <div class="gatos gato2">😻</div>
+  <div class="gatos gato3">😽</div>
+  <div class="gatos gato4">😸</div>
+  
+  <script>
+    function mostrarMensaje() {
+      alert("Te amo mucho, mi llaverito 💖. Que duremos toda la vida juntos y, como tú dijiste, pasemos más San Valentines juntitos. 🥰🌹 Eres mi razón de sonreír cada día y mi mayor felicidad. Gracias por hacerme sentir tan feliz, por estar ahí siempre. 💫");
+    }
+    
+    function explosionNo() {
+      const botonNo = document.querySelector('.no');
+      botonNo.classList.add('explosion'); // Agregar la clase de explosión
+      // Eliminar el botón después de la animación
+      setTimeout(() => {
+        botonNo.style.display = 'none';
+        mostrarYaQuisieras(); // Mostrar el mensaje "Ya quisieras"
+      }, 500); // Tiempo de la animación (500ms)
+    }
+    
+    function mostrarYaQuisieras() {
+      const mensajeYaQuisieras = document.getElementById('yaquisieras');
+      mensajeYaQuisieras.style.display = 'block'; // Mostrar el mensaje "Ya quisieras"
+      // Hacer que el mensaje se desvanecerá después de 2 segundos
+      setTimeout(() => {
+        mensajeYaQuisieras.style.animation = 'desvanecer 2s forwards';
+      }, 2000); // Se muestra durante 2 segundos antes de desvanecerse
+    }
+  </script>
+</body>
+</html>
